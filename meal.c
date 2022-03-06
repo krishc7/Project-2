@@ -30,7 +30,7 @@ float meal_eaten(int totalDays, float *excess, int carriedMeal[3]){
         excessMeal += carriedMeal[meal] * mealCost[meal]; //Testing only
     }
 
-    printf("Actual: %.2f\tTotal:%.2f\tExcess:%.2f\n", actualCost, totalCost, excessMeal); //Testing only
+    //printf("Actual: %.2f\tTotal:%.2f\tExcess:%.2f\n", actualCost, totalCost, excessMeal); //Testing only
     *excess += actualCost + excessMeal - totalCost;
 
     return actualCost;
@@ -46,7 +46,7 @@ float depart_arrival_time(int totalDays, float *excess){
     enum meals meal;
 
     //Departure meals
-    printf("Enter the time of departure: ");
+    printf("Enter the time of departure (5:02 am): ");
     scanf("%d:%d %s",&depart_hour,&depart_min,time);
     if(depart_hour >= 7  && (strcmp(time,"am") == 0)){
         meal = BREAK_FAST;
@@ -63,7 +63,7 @@ float depart_arrival_time(int totalDays, float *excess){
     }
 
     //Arrival meals 
-    printf("\nEnter the time of arrival: ");
+    printf("Enter the time of arrival (11:20 pm) : ");
     scanf("%d:%d %s",&arrival_hour,&arrival_min,time);
      if(arrival_hour >= 8 && (strcmp(time,"am") == 0)){
         meal = BREAK_FAST;
