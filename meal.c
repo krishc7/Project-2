@@ -1,4 +1,5 @@
 #include "meal.h"
+#include <string.h>
 
 enum meals {BREAK_FAST, LUNCH, DINNER};
 
@@ -24,18 +25,14 @@ float meal_eaten(int totalDays, float *excess, int carriedMeal[3]){
     scanf("%d", &mealEaten[meal]);
 
     for(meal = BREAK_FAST; meal <= DINNER; meal++){
-        actualCost += ( mealEaten[meal] + carriedMeal[meal]) * mealCost[meal];
+        actualCost += mealEaten[meal] * mealCost[meal];
         totalCost += allowedMeal * mealCost[meal];
-
-        
         excessMeal += carriedMeal[meal] * mealCost[meal]; //Testing only
-
-     
     }
 
     printf("Actual: %.2f\tTotal:%.2f\tExcess:%.2f\n", actualCost, totalCost, excessMeal); //Testing only
+    *excess += actualCost + excessMeal - totalCost;
 
-    *excess += actualCost - totalCost;
     return actualCost;
 
 }
@@ -54,13 +51,10 @@ float depart_arrival_time(int totalDays, float *excess){
     if(depart_hour >= 7  && (strcmp(time,"am") == 0)){
         meal = BREAK_FAST;
         carriedMeal[meal]--;
-     
     }
-    else if( (depart_hour < 6 || depart_hour == 12) && (strcmp(time,"pm") == 0) ){
-        
+    else if( (depart_hour < 6 || depart_hour == 12) && (strcmp(time,"pm") == 0) ){     
         meal = LUNCH;
-        carriedMeal[meal]--;
-      
+        carriedMeal[meal]--;    
 
     }
     else if (depart_hour >=6  && (strcmp(time,"pm") == 0) && depart_hour != 12 ){
@@ -68,43 +62,34 @@ float depart_arrival_time(int totalDays, float *excess){
         carriedMeal[meal]--;
     }
 
-
     //Arrival meals 
-    printf("\nEnter the time of arrival: \n");
+    printf("\nEnter the time of arrival: ");
     scanf("%d:%d %s",&arrival_hour,&arrival_min,time);
      if(arrival_hour >= 8 && (strcmp(time,"am") == 0)){
         meal = BREAK_FAST;
         carriedMeal[meal]--;
      
     }
-    else if( arrival_hour >= 1  && (strcmp(time,"pm") == 0) ){
-        
+    else if( arrival_hour >= 1  && (strcmp(time,"pm") == 0) ){    
         meal = LUNCH;
-        carriedMeal[meal]--;
-      
-
+        carriedMeal[meal]--;  
     }
     else if (arrival_hour >= 7  && (strcmp(time,"pm") == 0)){
        meal = DINNER;
         carriedMeal[meal]--;
     }
 
-
-
-
-
-
-    //Testign carrying meals
+    /*Testign carrying meals
     for(int i = 0; i < 3; i++){
         printf("%d",carriedMeal[i]);
     }
     printf("\n");
 
-   
+    */
 
-    totalCost = meal_eaten(totalDays, &excess, carriedMeal);
+    totalCost = (float) meal_eaten(totalDays, excess, carriedMeal);
+    
     return totalCost; 
-
 }
 
 
