@@ -34,6 +34,14 @@ void taxiFees(const char vehicleType[], float *taxiFee, float numOfDays)
         printf("\nTaxi was not used");
 }
 
+void hotelFees(float *hotelFee, float numOfDays)
+{
+    for (float i = 0; i < numOfDays; i++)
+    {
+        *hotelFee = *hotelFee - 90.0;
+    }
+}
+
 int main(int argc, char *argv[]) {
 
    float b =  45.00;
@@ -58,6 +66,15 @@ int main(int argc, char *argv[]) {
    printf("\n");
    printf("%s: after taxi fees for %f days and %f cost", taxiConfirmation, days, taxiFare);
    taxiFees(taxiConfirmation, &taxiFare, days);
+
+   float hotelDays = 3.0;
+   float hotelFare = 300.0;
+   printf("\n");
+   printf("after hotel fees for %f days and %f cost", hotelDays, hotelFare);
+   hotelFees(&hotelFare, hotelDays);
+   printf("\n");
+   printf("after hotel fees for %f days and %f cost", hotelDays, hotelFare);
+
 
 
 }
