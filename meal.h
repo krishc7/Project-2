@@ -1,4 +1,4 @@
-#ifdef MEAL_H
+#ifndef MEAL_H
 #define MEAL_H
 
 float depart_arrival_time(int totalDays, float *excess);
