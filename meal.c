@@ -48,7 +48,7 @@ float depart_arrival_time(int totalDays, float *excess){
 
     enum meals meal;
 
-
+    //Departure meals
     printf("Enter the time of departure: ");
     scanf("%d:%d %s",&depart_hour,&depart_min,time);
     if(depart_hour >= 7  && (strcmp(time,"am") == 0)){
@@ -68,8 +68,28 @@ float depart_arrival_time(int totalDays, float *excess){
         carriedMeal[meal]--;
     }
 
+
+    //Arrival meals 
     printf("\nEnter the time of arrival: \n");
     scanf("%d:%d %s",&arrival_hour,&arrival_min,time);
+     if(arrival_hour >= 8 && (strcmp(time,"am") == 0)){
+        meal = BREAK_FAST;
+        carriedMeal[meal]--;
+     
+    }
+    else if( arrival_hour >= 1  && (strcmp(time,"pm") == 0) ){
+        
+        meal = LUNCH;
+        carriedMeal[meal]--;
+      
+
+    }
+    else if (arrival_hour >= 7  && (strcmp(time,"pm") == 0)){
+       meal = DINNER;
+        carriedMeal[meal]--;
+    }
+
+
 
 
 
