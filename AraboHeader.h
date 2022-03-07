@@ -8,6 +8,7 @@ int totalNumDaysOnTrip();
 float amountRoundTripAirfare();
 float amountCarRentals();
 float milesDriven(float);
+float hotelExpenses();
 bool dollarMileValidation(float);
 
 #endif
