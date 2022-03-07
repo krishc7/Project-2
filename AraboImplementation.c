@@ -24,7 +24,7 @@ float amountRoundTripAirfare()
 
     do
     {
-        printf("Please enter the amount of round-trip airfar: $");
+        printf("Please enter the total cost of round-trip airfare: $");
         scanf("%f", &dollarAirfare);
     } while (!dollarMileValidation(dollarAirfare));
 
@@ -62,6 +62,16 @@ float milesDriven(float cDollarCarRental)
     {
         return 0;
     }
+}
+
+float hotelExpenses()
+{
+    float hotelCost, costCovered;
+    int numDays;
+    printf("Please enter your hotel expenses: ");
+    scanf("%f", &hotelCost);
+
+    return hotelCost;
 }
 
 bool dollarMileValidation(float cDollarMile)
