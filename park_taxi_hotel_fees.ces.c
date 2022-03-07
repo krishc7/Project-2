@@ -1,7 +1,8 @@
 // Take excess by reference
 
-# include<string.h>
+# include <string.h>
 # include <stdio.h>
+# include <stdbool.h>
 
 float conferenceFees(float seminarFees)
 {
@@ -42,6 +43,20 @@ void hotelFees(float *hotelFee, float numOfDays)
     }
 }
 
+bool dollarValidation(float dollar)
+{
+    if (dollar < 0.0)
+    {
+        printf("Invalid input. Negative numbers are not allowed.\n");
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+
 int main(int argc, char *argv[]) {
 
    float b =  45.00;
@@ -75,6 +90,6 @@ int main(int argc, char *argv[]) {
    printf("\n");
    printf("after hotel fees for %f days and %f cost", hotelDays, hotelFare);
 
-
+   printf("%c", dollarValidation(-2));
 
 }
