@@ -1,51 +1,12 @@
 // Take excess by reference
+#include "fees.h"
+#include <stdio.h>
+#include <stdbool.h>
 
-# include <string.h>
-# include <stdio.h>
-# include <stdbool.h>
-
-float conferenceFees(float seminarFees)
+bool check(float cDollarMile)
 {
-    return seminarFees;
-}
-
-void parkingFees(float *parkFee, float numOfDays)
-{
-    for (float i = 0; i < numOfDays; i++)
-    {
-        *parkFee = *parkFee - 6.0;
-    }
-//    return *parkFee;
-}
-
-void taxiFees(const char vehicleType[], float *taxiFee, float numOfDays)
-{
-    const char typeTaxi[] = "Taxi";
-    int comparison = strcmp(vehicleType, typeTaxi);
-//    printf("%d", comparison);
-    if (comparison == 0)
-    {
-        printf("\nTaxi was used");
-        for (float i = 0; i < numOfDays; i++)
-        {
-            *taxiFee = *taxiFee - 10.0;
-        }
-    }
-    else
-        printf("\nTaxi was not used");
-}
-
-void hotelFees(float *hotelFee, float numOfDays)
-{
-    for (float i = 0; i < numOfDays; i++)
-    {
-        *hotelFee = *hotelFee - 90.0;
-    }
-}
-
-bool dollarValidation(float dollar)
-{
-    if (dollar < 0.0)
+    float checker = 0.0;
+    if (cDollarMile < checker)
     {
         printf("Invalid input. Negative numbers are not allowed.\n");
         return false;
@@ -56,40 +17,36 @@ bool dollarValidation(float dollar)
     }
 }
 
+float conferenceFees()
+{
+    float seminarFees;
+    do
+    {
+        printf("Please enter your conference fees: $");
+        scanf("%f", &seminarFees);
+    } while (!check(seminarFees));
+    return seminarFees;
+}
 
-int main(int argc, char *argv[]) {
+float parkingFees(int numOfDays)
+{
+    float parkFee;
+    do
+    {
+        printf("Please enter your parking fees: $");
+        scanf("%f", &parkFee);
+    } while (!check(parkFee));
+    return parkFee;
+}
 
-   float b =  45.00;
-   printf("%f", conferenceFees(b));
-
-
- 
-   float c = 2.0;
-   float d = 14.0;
-   printf("\n");
-   printf("after parking fees for %f days and %f cost", c, d);
-   parkingFees(&d, c);
-   printf("\n");
-   printf("after parking fees for %f days and %f cost", c, d);
-
-   const char taxiConfirmation[] = "Taxi";
-   float days = 2.0;
-   float taxiFare = 24.0;
-   printf("\n");
-   printf("%s: after taxi fees for %f days and %f cost", taxiConfirmation, days, taxiFare);
-   taxiFees(taxiConfirmation, &taxiFare, days);
-   printf("\n");
-   printf("%s: after taxi fees for %f days and %f cost", taxiConfirmation, days, taxiFare);
-   taxiFees(taxiConfirmation, &taxiFare, days);
-
-   float hotelDays = 3.0;
-   float hotelFare = 300.0;
-   printf("\n");
-   printf("after hotel fees for %f days and %f cost", hotelDays, hotelFare);
-   hotelFees(&hotelFare, hotelDays);
-   printf("\n");
-   printf("after hotel fees for %f days and %f cost", hotelDays, hotelFare);
-
-   printf("%c", dollarValidation(-2));
-
+float taxiFees()
+{
+    float taxiCost;
+    int numDays;
+    do
+    {
+        printf("Please enter your taxi fares: $");
+        scanf("%f", &taxiCost);   
+    } while (!check(taxiCost));
+    return taxiCost;
 }
