@@ -51,7 +51,7 @@ float milesDriven(float cDollarCarRental)
     do
     {
         printf("Please enter the amount of miles driven: ");
-        scanf("%d", &miles);
+        scanf("%f", &miles);
     } while (!dollarMileValidation(miles));
 
     if (cDollarCarRental == 0)
@@ -66,10 +66,13 @@ float milesDriven(float cDollarCarRental)
 
 float hotelExpenses()
 {
-    float hotelCost, costCovered;
-    int numDays;
-    printf("Please enter your hotel expenses: ");
-    scanf("%f", &hotelCost);
+    float hotelCost;
+
+    do
+    {
+        printf("Please enter your hotel expenses: $");
+        scanf("%f", &hotelCost);
+    } while (!dollarMileValidation(hotelCost));
 
     return hotelCost;
 }
