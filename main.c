@@ -7,7 +7,7 @@
 int main() {
 
     int days;
-    float airfare, carRentals, drivingFee, conference, mealCostsCovered;
+    float airfare, carRentals, drivingFee, conference;
     float parking, taxi, mealCost, *excessCost, hotelFees;
     float totalExpenses, totalAllowed, amtSaved;
 
