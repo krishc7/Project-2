@@ -48,14 +48,14 @@ float milesDriven(float cDollarCarRental)
 {
     float miles;
 
-    do
-    {
-        printf("Please enter the amount of miles driven: ");
-        scanf("%f", &miles);
-    } while (!dollarMileValidation(miles));
-
     if (cDollarCarRental == 0)
     {
+        do
+        {
+            printf("Please enter the amount of miles driven: ");
+            scanf("%f", &miles);
+        } while (!dollarMileValidation(miles));
+
         return miles * 0.27;
     }
     else
