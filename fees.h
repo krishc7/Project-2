@@ -1,12 +1,11 @@
-#ifndef ConfParkTaxiHotelFeesHeader_H
-
-#define ConfParkTaxiHotelFeesHeader_H
+#ifndef FEE_H
+#define FEE_H
 
 float numOfdays;
 float parkingFee,taxiFee; 
 
-float conferenceFees(float seminarFees);
-void parkingFees(float *parkFee, float numOfDays);
-void taxiFees(const char vehicleType[], float *taxiFee, float numOfDays);
+float conferenceFees();
+float parkingFees(int numOfDays);
+float taxiFees();
 
 #endif
